@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { RentalResponseModel } from 'src/app/models/rentalResponseModel';
 import { RentalDetailDto } from 'src/app/models/rentalDetailDto';
-import { RentalService } from 'src/app/services/rental/rental.service';
+import { RentalService } from 'src/app/services/rental.service';
 
 @Component({
   selector: 'app-rental',

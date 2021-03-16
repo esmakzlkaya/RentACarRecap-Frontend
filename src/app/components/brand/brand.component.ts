@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Brand } from 'src/app/models/brand';
-import { HttpClient } from '@angular/common/http';
-import { BrandResponseModel } from 'src/app/models/brandResponseModel';
-import { BrandService } from 'src/app/services/brand/brand.service';
+import { BrandService } from 'src/app/services/brand.service';
 
 @Component({
   selector: 'app-brand',
@@ -10,6 +8,9 @@ import { BrandService } from 'src/app/services/brand/brand.service';
   styleUrls: ['./brand.component.css'],
 })
 export class BrandComponent implements OnInit {
+
+  currentBrand:Brand;
+  emptyBrand:Brand;
   brands: Brand[] = [];
   dataLoaded=false;
   constructor(private brandService: BrandService) {}
@@ -23,5 +24,25 @@ export class BrandComponent implements OnInit {
       this.brands = response.data;
       this.dataLoaded=true;
     });
+  }
+  setCurrentBrand(brand:Brand){
+    this.currentBrand=brand;
+  }
+  removeCurrentBrand(){
+    this.currentBrand=this.emptyBrand;
+  }
+  getCurrentBrandClass(brand:Brand){
+    if(this.currentBrand==brand){
+      return "list-group-item active"
+    }else{
+      return "list-group-item"
+    }
+  }
+  getAllBrandsClass(){
+    if(!this.currentBrand){
+      return "list-group-item list-group-item-dark active"
+    }else{
+      return "list-group-item list-group-item-dark"
+    }
   }
 }
