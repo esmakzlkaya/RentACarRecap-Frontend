@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -8,9 +9,12 @@ import { ListResponseModel } from '../models/listResponseModel';
   providedIn: 'root'
 })
 export class CustomerService {
-
-  apiUrl = 'https://localhost:44347/api/customers/getall';
-  constructor(private httpClient: HttpClient) { }
+  
+  private apiUrl: string = environment.apiUrl;
+  
+  constructor(private httpClient: HttpClient) {
+    this.apiUrl = this.apiUrl + 'customers/getall';
+  }
   
   getCustomers():Observable<ListResponseModel<Customer>> {
     return this.httpClient.get<ListResponseModel<Customer>>(this.apiUrl);
