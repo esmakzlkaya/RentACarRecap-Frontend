@@ -5,16 +5,15 @@
   <li
     (click)="removeCurrentColor()"
     routerLink="/cars"
-    [class]="getAllColorsClass()"
+    [class]="getAllCarsClass()"
   >
-    All Colors
+    Colors
   </li>
-  <li class="list-group-item list-group-item-info">Colors</li>
   <li
     (click)="setCurrentColor(color)"
     routerLink="/cars/colors/{{color.id}}"
     *ngFor="let color of colors"
-    [class]="getCurrentBrandClass(color)"
+    [class]="getCurrentColorClass(color)"
   >
     {{ color.name }}
   </li>

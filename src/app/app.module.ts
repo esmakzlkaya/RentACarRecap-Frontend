@@ -10,6 +10,8 @@ import { CarComponent } from './components/car/car.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AsideComponent } from './components/aside/aside.component';
+import { ArticleComponent } from './components/article/article.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 
 @NgModule({
@@ -21,6 +23,8 @@ import { CarDetailComponent } from './components/car-detail/car-detail.component
     CarComponent,
     RentalComponent,
     NaviComponent,
+    AsideComponent,
+    ArticleComponent,
     CarDetailComponent
   ],
   imports: [

@@ -18,11 +18,12 @@ export class ColorComponent implements OnInit {
   ngOnInit(): void {
     this.getColors();
   }
+  
   getColors() {
     this.colorService.getColors().subscribe((response) => {
-        this.colors=response.data
-        this.dataLoaded=true;
-      });
+      this.colors = response.data;
+      this.dataLoaded=true;
+    });
   }
   setCurrentColor(color:Color){
     this.currentColor=color;
@@ -30,18 +31,18 @@ export class ColorComponent implements OnInit {
   removeCurrentColor(){
     this.currentColor=this.emptyColor;
   }
-  getCurrentBrandClass(color:Color){
-    if(color==this.currentColor){
+  getCurrentColorClass(color:Color){
+    if(this.currentColor==color){
       return "list-group-item active"
     }else{
       return "list-group-item"
     }
   }
-  getAllColorsClass(){
-    if(!this.currentColor){
-      return "list-group-item list-group-item-dark active"
+  getAllCarsClass(){
+    if((!this.currentColor)){
+      return "list-group-item list-group-item-info active"
     }else{
-      return "list-group-item list-group-item-dark"
+      return "list-group-item list-group-item-info"
     }
   }
 }

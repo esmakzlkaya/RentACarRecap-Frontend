@@ -5,11 +5,10 @@
   <li
     (click)="removeCurrentBrand()"
     routerLink="/cars"
-    [class]="getAllBrandsClass()"
+    [class]="getAllCarsClass()"
   >
-    All Brands
+    Brands
   </li>
-  <li class="list-group-item list-group-item-info">Brands</li>
   <li
     (click)="setCurrentBrand(brand)"
     routerLink="/cars/brands/{{brand.id}}"

@@ -1,21 +1,34 @@
-<div *ngIf="dataLoaded==false" class="spinner-border text-dark" role="status">
-    <span class="visually-hidden">Loading...</span>
+<div *ngIf="dataLoaded == false" class="spinner-border text-dark" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div *ngIf="dataLoaded == true">
+  <div class="col-md-9" *ngFor="let carImage of carImages">
+    <img
+      src="{{ imgPath }}{{ carImage.imagePath }}"
+      alt="..."
+      class="img-fluid"
+      width="250"
+      height="200"
+    /> 
   </div>
-  <table *ngIf="dataLoaded==true" class="table">
-    <thead>
-      <tr>
-        <th scope="col">Description</th>
-        <th scope="col">Brand</th>
-        <th scope="col">Color</th>
-        <th scope="col">DailyPrice</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let carDetail of carDetails">
-        <td>{{carDetail.carName}}</td>
-        <td>{{carDetail.brandName}}</td>
-        <td>{{carDetail.colorName}}</td>
-        <td>{{carDetail.dailyPrice}}</td>
-      </tr>
-    </tbody>
-  </table>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Car Name</th>
+          <th scope="col">Brand Name</th>
+          <th scope="col">Color Name</th>
+          <th scope="col">DailyPrice</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let carDetail of carDetails">
+          <td>{{ carDetail.carId }}</td>
+          <td>{{ carDetail.carName }}</td>
+          <td>{{ carDetail.brandName }}</td>
+          <td>{{ carDetail.colorName }}</td>
+          <td>{{ carDetail.dailyPrice }}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>

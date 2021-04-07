@@ -10,38 +10,54 @@ import { CarService } from 'src/app/services/car.service';
   styleUrls: ['./car.component.css'],
 })
 export class CarComponent implements OnInit {
-
-  cars:Car[]=[];
-  dataLoaded=false;
-  constructor(private carService: CarService,private activatedRoute:ActivatedRoute) {}
+  currentCar: Car;
+  emptyCar: Car;
+  cars: Car[] = [];
+  carDetail: CarDetailDto[] = [];
+  dataLoaded = false;
+  constructor(
+    private carService: CarService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params=>{
-      if(params["colorId"]){
-        this.getCarsByColor(params["colorId"]);
-      }if (params["brandId"]) {
-        this.getCarsByBrand(params["brandId"]);
+    this.activatedRoute.params.subscribe((params) => {
+      if (params['colorId']) {
+        this.getCarsByColor(params['colorId']);
+      } else if (params['brandId']) {
+        this.getCarsByBrand(params['brandId']);
       } else {
         this.getCars();
       }
-    })
+    });
   }
   getCars() {
     this.carService.getCars().subscribe((response) => {
       this.cars = response.data;
-      this.dataLoaded=true;
+      this.dataLoaded = true;
     });
   }
-  getCarsByColor(colorId:number) {
+  getCarsByColor(colorId: number) {
     this.carService.getCarsByColor(colorId).subscribe((response) => {
       this.cars = response.data;
-      this.dataLoaded=true;
+      this.dataLoaded = true;
     });
   }
-  getCarsByBrand(brandId:number) {
+  getCarsByBrand(brandId: number) {
     this.carService.getCarsByBrand(brandId).subscribe((response) => {
       this.cars = response.data;
-      this.dataLoaded=true;
+      this.dataLoaded = true;
     });
   }
+  setCurrentCar(car: Car) {
+    this.currentCar = car;
+  }
+  getCurrentCarClass(car: Car) {
+    if (this.currentCar == car) {
+      return 'table-primary';
+    } else {
+      return '';
+    }
+  }
+  
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Brand } from 'src/app/models/brand';
 import { BrandService } from 'src/app/services/brand.service';
+import { ColorComponent } from '../color/color.component';
 
 @Component({
   selector: 'app-brand',
@@ -38,11 +39,11 @@ export class BrandComponent implements OnInit {
       return "list-group-item"
     }
   }
-  getAllBrandsClass(){
-    if(!this.currentBrand){
-      return "list-group-item list-group-item-dark active"
+  getAllCarsClass(){
+    if((!this.currentBrand)){
+      return "list-group-item list-group-item-info active"
     }else{
-      return "list-group-item list-group-item-dark"
+      return "list-group-item list-group-item-info"
     }
   }
 }
