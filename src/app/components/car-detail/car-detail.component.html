@@ -2,33 +2,45 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 <div *ngIf="dataLoaded == true">
-  <div class="col-md-9" *ngFor="let carImage of carImages">
-    <img
+  <div class="col-md-9" >
+    <img *ngFor="let carImage of carImages"
       src="{{ imgPath }}{{ carImage.imagePath }}"
       alt="..."
       class="img-fluid"
-      width="250"
-      height="200"
+      width="200"
+      height="150"
     /> 
   </div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Car Name</th>
-          <th scope="col">Brand Name</th>
-          <th scope="col">Color Name</th>
-          <th scope="col">DailyPrice</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr  *ngFor="let carDetail of carDetails">
-          <td>{{ carDetail.carId }}</td>
-          <td>{{ carDetail.carName }}</td>
-          <td>{{ carDetail.brandName }}</td>
-          <td>{{ carDetail.colorName }}</td>
-          <td>{{ carDetail.dailyPrice }}</td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Car Name</th>
+        <th scope="col">Brand Name</th>
+        <th scope="col">Color Name</th>
+        <th scope="col">DailyPrice</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let carDetail of carDetails">
+        <td>{{ carDetail.carId }}</td>
+        <td>{{ carDetail.carName }}</td>
+        <td>{{ carDetail.brandName }}</td>
+        <td>{{ carDetail.colorName }}</td>
+        <td>{{ carDetail.dailyPrice | currency: "TRY":"symbol-narrow" }}</td>
+        <td>
+          <button
+          *ngIf="rentalAvailable==true"
+            type="button"
+            routerLink="/cars/rental/{{ carDetail.carId }}"
+            class="btn btn-success"
+          >
+            Kirala
+          </button>
+          <h6 *ngIf="rentalAvailable==false" >Araç kiralanamaz</h6>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

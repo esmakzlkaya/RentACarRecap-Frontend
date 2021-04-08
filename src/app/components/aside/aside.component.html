@@ -1,12 +1,37 @@
 <ul class="list-group">
-    <li
-      (click)="removeCurrentCar()"
-      routerLink="/cars"
-      [class]="getAllCarsClass()"
-    >
-      All Cars
-    </li>
-  </ul>
+  <li
+    (click)="removeCurrentCar()"
+    routerLink="/cars"
+    [class]="getAllCarsClass()"
+  >
+    All Cars
+  </li>
+</ul>
 <app-brand></app-brand>
-<br>
+<br />
 <app-color></app-color>
+<br />
+<div class="bg-light">
+  <br />
+  <select class="form-select" id="brandSelect" [(ngModel)]="currentBrand" [compareWith]="isBrandSelected">
+    <option disabled selected>Brands</option>
+    <option
+      *ngFor="let brand of brands"
+      value="{{ brand.id }}"
+    >
+      {{ brand.name }}
+    </option>
+  </select>
+  <br />
+  <select class="form-select" id="colorSelect" [(ngModel)]="currentColor" [compareWith]="isColorSelected">
+    <option disabled selected>Colors</option>
+    <option
+      *ngFor="let color of colors"
+      value="{{ color.id }}"
+    >
+      {{ color.name }}
+    </option>
+  </select>
+  <br />
+  <button routerLink="./" [queryParams]="{ color: currentColor,brand:currentBrand}" type="button" class="btn btn-success" >Filtrele</button>
+</div>

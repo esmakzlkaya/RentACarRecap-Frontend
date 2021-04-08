@@ -1,0 +1,87 @@
+<div class="content">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header"><h5 class="title">Ödeme Sayfası</h5></div>
+        <div class="card-body">
+          <form [formGroup]="paymentForm">
+            <div class="mb-3">
+              <label for="customerName">İsim Soyisim</label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="customerName"
+                  formControlName="customerName"
+                  class="form-control"
+                  placeholder="İsim Soyisim"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="creditCardNo">Kredi Kartı Numarası</label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="creditCardNo"
+                  formControlName="creditCardNo"
+                  class="form-control"
+                  placeholder="Kredi Kartı"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="expirationDate">Son Kullanma Tarihi</label>
+              <div class="form-group">
+                <input
+                [ngModel]="expirationDate | date: 'yyyy-MM-dd'"
+                  type="date"
+                  id="expirationDate"
+                  formControlName="expirationDate"
+                  class="form-control"
+                  placeholder="Son Kullanma Tarihi"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="cvv">CVV</label>
+              <div class="form-group">
+                <input
+                  type="number"
+                  id="cvv"
+                  formControlName="cvv"
+                  class="form-control"
+                  placeholder="CVV"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+                <label for="cardType">Kart Tipi</label>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    id="cardType"
+                    formControlName="cardType"
+                    class="form-control"
+                    placeholder="Kart Tipi"
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="installment">Taksit Seçimi</label>
+                <div class="form-group">
+                  <input
+                    type="number"
+                    id="installment"
+                    formControlName="installment"
+                    class="form-control"
+                    placeholder="Taksit Seçimi"
+                  />
+                </div>
+              </div>
+          </form>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-fill btn-primary" (click)="pay()">Ödeme Yap</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,23 +1,47 @@
-<div *ngIf="dataLoaded == false" class="spinner-border text-dark" role="status">
-  <span class="visually-hidden">Loading...</span>
+<div>
+  <div class="card">
+    <h5 class="card-header">Araç Kirala</h5>
+    <div class="card-body">
+      <table class="table">
+        <tr>
+          <td><h6 class="card-title">Alış Tarihi</h6></td>
+          <td><h6 class="card-title">Teslim Tarihi</h6></td>
+          <td></td>
+        </tr>
+        <tbody>
+          <tr>
+            <td>
+              <input
+                [ngModel]="rentStartDate | date: 'yyyy-MM-dd'"
+                (ngModelChange)="rentStartDate = $event"
+                class="form-control"
+                type="date"
+                id="rentStartDate"
+                required
+              />
+            </td>
+            <td>
+              <input
+                [ngModel]="rentEndDate | date: 'yyyy-MM-dd'"
+                (ngModelChange)="rentEndDate = $event"
+                class="form-control"
+                type="date"
+                id="rentEndDate"
+                required
+              />
+            </td>
+            <td>
+              <button
+                type="button"
+                routerLink="/cars/payment/{{ currentCarId }}"
+                class="btn btn-success"
+              >
+                Aracı Kirala
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-<table *ngIf="dataLoaded == true" class="table">
-  <thead>
-    <tr>
-      <th scope="col">Car</th>
-      <th scope="col">Customer</th>
-      <th scope="col">Rent Date</th>
-      <th scope="col">Return Date</th>
-      <th scope="col">DailyPrice</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let rentalDetail of rentalDetails">
-      <td>{{ rentalDetail.carName }}</td>
-      <td>{{ rentalDetail.customerName }}</td>
-      <td>{{ rentalDetail.rentDate }}</td>
-      <td>{{ rentalDetail.returnDate }}</td>
-      <td>{{ rentalDetail.dailyPrice }}</td>
-    </tr>
-  </tbody>
-</table>
