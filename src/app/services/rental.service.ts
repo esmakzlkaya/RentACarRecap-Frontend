@@ -24,9 +24,9 @@ export class RentalService {
     return this.httpClient.post<ResponseModel>(newPath,rental);
 
   }
-  getRentalsByCarId(carId:number): Observable<SingleResponseModel<Rental>> {
+  getRentalsByCarId(carId:number): Observable<ListResponseModel<Rental>> {
     let newPath=this.apiUrl+"rentals/getallbycarid?carId="+carId;
-    return this.httpClient.get<SingleResponseModel<Rental>>(newPath);
+    return this.httpClient.get<ListResponseModel<Rental>>(newPath);
   }
   
 }

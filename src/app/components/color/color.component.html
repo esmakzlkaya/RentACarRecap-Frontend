@@ -9,12 +9,19 @@
   >
     Colors
   </li>
-  <li
+  <li *ngFor="let color of colors"
+  [class]="getCurrentColorClass(color)">
+    <label
     (click)="setCurrentColor(color)"
     routerLink="/cars/colors/{{color.id}}"
-    *ngFor="let color of colors"
-    [class]="getCurrentColorClass(color)"
-  >
-    {{ color.name }}
+      >{{ color.name }}</label
+    >
+    <button
+      class="btn btn-success"
+      style="float: right"
+      routerLink="/admin/colorupdate/{{ color.id }}"
+    >
+      Güncelle
+    </button>
   </li>
 </ul>

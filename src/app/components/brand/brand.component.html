@@ -1,20 +1,28 @@
 <div *ngIf="dataLoaded == false" class="spinner-border text-dark" role="status">
   <span class="visually-hidden">Loading...</span>
 </div>
-<ul *ngIf="dataLoaded == true" class="list-group">
-  <li
-    (click)="removeCurrentBrand()"
-    routerLink="/cars"
-    [class]="getAllCarsClass()"
-  >
-    Brands
-  </li>
-  <li
-    (click)="setCurrentBrand(brand)"
-    routerLink="/cars/brands/{{brand.id}}"
-    *ngFor="let brand of brands"
-    [class]="getCurrentBrandClass(brand)"
-  >
-    {{ brand.name }}
-  </li>
-</ul>
+<div *ngIf="dataLoaded == true">
+  <ul class="list-group">
+    <li
+      (click)="removeCurrentBrand()"
+      routerLink="/cars"
+      [class]="getAllCarsClass()"
+    >
+      Brands
+    </li>
+    <li [class]="getCurrentBrandClass(brand)" *ngFor="let brand of brands">
+      <label
+        (click)="setCurrentBrand(brand)"
+        routerLink="/cars/brands/{{ brand.id }}"
+        >{{ brand.name }}</label
+      >
+      <button
+        class="btn btn-success"
+        style="float: right"
+        routerLink="/admin/brandupdate/{{ brand.id }}"
+      >
+        Güncelle
+      </button>
+    </li>
+  </ul>
+</div>

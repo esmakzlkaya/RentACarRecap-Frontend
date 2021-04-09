@@ -1,12 +1,18 @@
 <div *ngIf="dataLoaded == false" class="spinner-border text-dark" role="status">
   <span class="visually-hidden">Loading...</span>
 </div>
-<div class="mb-3">
+<div class="mb-3" *ngIf="dataLoaded == true">
   <label for="filterText" class="form-label">Arama</label>
-  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Arama ifadesi giriniz...">
+  <input
+    type="text"
+    [(ngModel)]="filterText"
+    class="form-control"
+    id="filterText"
+    placeholder="Arama ifadesi giriniz..."
+  />
 </div>
-<div *ngIf="filterText.length>2" class="alert alert-info">
- ' {{filterText}} ' aradınız. 
+<div *ngIf="filterText.length > 2" class="alert alert-info">
+  ' {{ filterText }} ' aradınız.
 </div>
 <table *ngIf="dataLoaded == true" class="table">
   <thead>
@@ -17,21 +23,31 @@
       <th scope="col">Model Year</th>
       <th scope="col">DailyPrice</th>
       <th scope="col">Description</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr
       (click)="setCurrentCar(car)"
-      routerLink="/cars/carDetail/{{car.id}}"
-      *ngFor="let car of cars | filterPipe:filterText"
+      routerLink="/cars/carDetail/{{ car.id }}"
+      *ngFor="let car of cars | filterPipe: filterText"
       [class]="getCurrentCarClass(car)"
     >
       <td>{{ car.id }}</td>
       <td>{{ car.brandId }}</td>
       <td>{{ car.colorId }}</td>
       <td>{{ car.modelYear }}</td>
-      <td>{{ car.dailyPrice | currency:'TRY':'symbol-narrow' }}</td>
+      <td>{{ car.dailyPrice | currency: "TRY":"symbol-narrow" }}</td>
       <td>{{ car.description }}</td>
+      <td>
+        <button
+          class="btn btn-success"
+          style="float: right"
+          routerLink="/admin/carupdate/{{ car.id }}"
+        >
+          Güncelle
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>

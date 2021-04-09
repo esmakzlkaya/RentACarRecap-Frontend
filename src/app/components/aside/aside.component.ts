@@ -69,7 +69,9 @@ export class AsideComponent implements OnInit {
       if(params["color"]){
         this.currentColor===params["color"];
       }
-      this.toastrService.success("Tüm arabalar listelendi.")
+      if(this.dataLoaded==true){
+        this.toastrService.success("Tüm arabalar listelendi.")
+      }
     })
   }
   

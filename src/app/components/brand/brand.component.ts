@@ -19,7 +19,6 @@ export class BrandComponent implements OnInit {
   ngOnInit(): void {
     this.getBrands();
   }
-
   getBrands() {
     this.brandService.getBrands().subscribe((response) => {
       this.brands = response.data;
@@ -32,6 +31,7 @@ export class BrandComponent implements OnInit {
   removeCurrentBrand(){
     this.currentBrand=this.emptyBrand;
   }
+  
   getCurrentBrandClass(brand:Brand){
     if(this.currentBrand==brand){
       return "list-group-item active"

@@ -27,7 +27,7 @@ export class PaymentComponent implements OnInit {
     private formBuilder: FormBuilder,
     private paymentService: PaymentService,
     private toastrService: ToastrService,
-    private rentalService:RentalService
+    private rentalService: RentalService
   ) {}
 
   ngOnInit(): void {
@@ -51,11 +51,15 @@ export class PaymentComponent implements OnInit {
       this.paymentService.pay(paymentModel).subscribe(
         (response) => {
           this.toastrService.success(response.message, 'Başarılı');
-
         },
         (responseError) => {
-          if (responseError.error != null) {
-            this.toastrService.error(responseError.error.message, 'Hata');
+          if (responseError.error.ValidationErrors.length > 0) {
+            for (let i = 0; i < responseError.error.ValidationErrors.length; i++) {
+              this.toastrService.error(
+                responseError.error.ValidationErrors[i].ErrorMessage,
+                'Doğrulama Hatası'
+              );
+            }
           }
         }
       );
@@ -71,12 +75,15 @@ export class PaymentComponent implements OnInit {
       rentStartDate: this.rentStartDate,
       rentEndDate: this.rentEndDate,
     };
-    this.rentalService.rentCar(addedRental).subscribe((response) => {
-      this.toastrService.success(response.message,"Başarılı");
-    },responseError=>{
-       if(responseError.error!=null){
-          this.toastrService.error(responseError.error.message,"Hata")
+    this.rentalService.rentCar(addedRental).subscribe(
+      (response) => {
+        this.toastrService.success(response.message, 'Başarılı');
+      },
+      (responseError) => {
+        if (responseError.error != null) {
+          this.toastrService.error(responseError.error.message, 'Hata');
+        }
       }
-    });
+    );
   }
 }

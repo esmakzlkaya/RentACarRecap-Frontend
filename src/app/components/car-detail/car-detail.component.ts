@@ -16,7 +16,7 @@ import { RentalService } from 'src/app/services/rental.service';
 export class CarDetailComponent implements OnInit {
   imgPath: string = 'https://localhost:44347';
   dataLoaded = false;
-  rentalByCarId:Rental;
+  rentalByCarId:Rental[]=[];
   carDetails: CarDetailDto[] = [];
   carImages: CarImage[] = [];
   filterText: string = '';
@@ -24,7 +24,7 @@ export class CarDetailComponent implements OnInit {
   dateTimeNow: Date = new Date();
   rentStartDate: Date;
   rentEndDate: Date;
-  rentalAvailable: boolean=false;
+  rentalAvailable: boolean=true;
   constructor(
     private carDetailService: CarDetailService,
     private carImageService: CarImagesService,
@@ -43,9 +43,13 @@ export class CarDetailComponent implements OnInit {
   getRentalsByCarId(carId: number) {
     this.rentalService.getRentalsByCarId(carId).subscribe((response) => {
       this.rentalByCarId = response.data;
-      if (this.rentalByCarId.returnDate !== null){
-        this.rentalAvailable = true;
-      }
+      this.rentalByCarId.forEach(rental => {
+        if ((this.rentalByCarId.length>0)&&(rental.returnDate === null)){
+          this.rentalAvailable = false;
+        }else{
+          this.rentalAvailable=true;
+        }
+      });
     });
   }
   getCarDetailByCarId(carId: number) {
