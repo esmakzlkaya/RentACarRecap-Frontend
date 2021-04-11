@@ -9,7 +9,7 @@ import { ResponseModel } from '../models/responseModel';
 })
 export class PaymentService {
 
-  apiUrl = 'https://localhost:44347/api/';
+  apiUrl = 'https://localhost:44370/api/';
   constructor(private httpClient:HttpClient) { }
 
 

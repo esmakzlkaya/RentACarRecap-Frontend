@@ -4,5 +4,6 @@ export interface CarDetailDto{
     brandName:string,
     colorName:string,
     dailyPrice:number,
-    imagePath:string
+    imagePath:string,
+    findeksScore:number
 }

@@ -1,0 +1,36 @@
+<div class="content">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header"><h5 class="title">Findeks</h5></div>
+        <div class="card-body">
+          <form >
+            <div class="mb-3">
+              <label for="nationalityId">TC Kimlik No</label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="nationalityId"
+                  class="form-control"
+                  placeholder="{{nationalityId}}"
+                  
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="findeksScore">Findeks Puanı</label>
+              <div class="form-group">
+                <input
+                [attr.disabled]="true"
+                  type="text"
+                  id="findeksScore"
+                  class="form-control"
+                  placeholder="{{ findeksScore }}"
+                />
+              </div>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

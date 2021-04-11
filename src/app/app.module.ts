@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -27,6 +27,13 @@ import { CarUpdateComponent } from './components/car-update/car-update.component
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
 import { BrandFilterPipePipe } from './pipes/brand-filter-pipe.pipe';
 import { ColorFilterPipePipe } from './pipes/color-filter-pipe.pipe';
+import { LoginComponent } from './components/login/login.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { RegisterComponent } from './components/register/register.component';
+import { LogOutComponent } from './components/log-out/log-out.component';
+import { UserComponent } from './components/user/user.component';
+import { FindeksComponent } from './components/findeks/findeks.component';
+import { CreditCardComponent } from './components/credit-card/credit-card.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +57,12 @@ import { ColorFilterPipePipe } from './pipes/color-filter-pipe.pipe';
     ColorUpdateComponent,
     BrandFilterPipePipe,
     ColorFilterPipePipe,
+    LoginComponent,
+    RegisterComponent,
+    LogOutComponent,
+    UserComponent,
+    FindeksComponent,
+    CreditCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +75,9 @@ import { ColorFilterPipePipe } from './pipes/color-filter-pipe.pipe';
       positionClass:"toast-bottom-right"
     })
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

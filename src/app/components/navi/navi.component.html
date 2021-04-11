@@ -23,10 +23,19 @@
             </ul>
           </li>
         </ul>
-       <!--  <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-light bg-dark" type="submit">Search</button>
-        </form> -->
+         <form class="d-flex">
+          <button *ngIf="isAuthenticated()==false" routerLink="/login"  class="btn btn-success" type="submit">Giriş Yap</button>
+          <button *ngIf="isAuthenticated()==false" routerLink="/register" class="btn btn-warning" type="submit">Üye Ol</button>
+          <div *ngIf="isAuthenticated()==true" class="dropdown">
+            <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+             {{userName}}
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><button *ngIf="isAuthenticated()==true" routerLink="/profile/update/{{userId}}" class=" dropdown-item" type="submit">Bilgilerimi Güncelle</button></li>
+              <li><button *ngIf="isAuthenticated()==true" (click)="logOut()" class=" dropdown-item" type="submit">Çıkış Yap</button></li>
+            </ul>
+          </div>
+        </form> 
       </div>
     </div>
   </nav>

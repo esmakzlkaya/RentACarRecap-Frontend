@@ -31,14 +31,15 @@
         <td>{{ carDetail.dailyPrice | currency: "TRY":"symbol-narrow" }}</td>
         <td>
           <button
-          *ngIf="rentalAvailable==true"
+          *ngIf="(rentalAvailable==true)&&(isCarAvailable==true)"
             type="button"
             routerLink="/cars/rental/{{ carDetail.carId }}"
             class="btn btn-success"
           >
             Kirala
           </button>
-          <h6 *ngIf="rentalAvailable==false" >Araç kiralanamaz</h6>
+          <h6 *ngIf="(rentalAvailable==true)&&(isCarAvailable==false)"  >Findeks Puanınız bu araç için yeterli değil!</h6>
+          <h6 *ngIf="(rentalAvailable==false)&&(isCarAvailable==false)"  >Araç kiralanamaz</h6>
         </td>
       </tr>
     </tbody>

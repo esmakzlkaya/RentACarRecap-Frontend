@@ -1,0 +1,71 @@
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="title">Hesap Bilgilerimi Güncelle</h5>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="userUpdateForm">
+          <div class="mb-3">
+            <label for="firstName">İsim</label>
+            <div class="form-group">
+              <input
+                type="text"
+                id="firstName"
+                formControlName="firstName"
+                class="form-control"
+                placeholder="{{ firstName }}"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="lastName">Soyisim</label>
+            <div class="form-group">
+              <input
+                type="text"
+                id="lastName"
+                formControlName="lastName"
+                class="form-control"
+                placeholder="{{ lastName }}"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="email">E Posta</label>
+            <div class="form-group">
+              <input
+                type="text"
+                id="email"
+                formControlName="email"
+                class="form-control"
+                placeholder="{{ email }}"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="password">Şifre</label>
+            <div class="form-group">
+              <input
+                type="text"
+                id="password"
+                formControlName="password"
+                class="form-control"
+                placeholder=""
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-fill btn-primary" (click)="update()">
+          Bilgilerimi Güncelle
+        </button>
+        <br />
+        <br />
+        <button class="btn btn-fill btn-secondary" routerLink="/profile/findeks/{{currentId}}">
+          Findeks Puanımı Gör
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
