@@ -1,4 +1,4 @@
-# RecapRentACar
+# RecapRentACar-Frontend
 **_(Nitelikli)_ Yazılım Geliştirici Yetiştirme Kampı** kapsamında gerçekleştirilen bir **_Araç Kiralama Sistemi_**' dir.
 Visual Studio Code kullanılarak geliştirilmiş bir **Angular** projesidir.
 
